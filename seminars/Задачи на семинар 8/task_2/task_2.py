@@ -14,11 +14,10 @@ JSON файл.
 
 """
 
-
 import json
 
 
-def fun_dump_json():
+def dump_json(json_file):
     # name = input("введите имя:> ")
     # user_id = input("введите id:> ")
     # level = int(input('введите уровень доступа (1-7):> '))
@@ -26,8 +25,8 @@ def fun_dump_json():
     user_id = "002"
     level = 4
 
-    with open('task8_2.json', "r", encoding='utf-8') as f:
-        res = json.load(f)
+    with open(json_file, "r", encoding='utf-8') as rf:
+        res = json.load(rf)
 
     my_dct = {
         "level": level,
@@ -35,17 +34,17 @@ def fun_dump_json():
         "name": name,
     }
 
-    with open('task8_2.json', "w", encoding='utf-8') as js_f:
+    with open(json_file, "w", encoding='utf-8') as wf:
         res.append(my_dct)
-        json.dump(res, js_f, indent=2, separators=(',', ':'), ensure_ascii=False)
+        json.dump(res, wf, indent=2, separators=(',', ':'), ensure_ascii=False)
 
 
+my_file = 'task8_2.json'
 lst = []
-with open('task8_2.json', "w", encoding='utf-8') as js_f:
+with open(my_file, "w", encoding='utf-8') as js_f:
     json.dump(lst, js_f)
 
 s = 'n'
 while s != 'y':
-    fun_dump_json()
+    dump_json(my_file)
     s = input('выход y/n :>')
-

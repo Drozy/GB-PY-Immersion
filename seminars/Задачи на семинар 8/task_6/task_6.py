@@ -8,12 +8,19 @@
 столбца из переданного файла.
 """
 
+import os
 import pickle
 import csv
-with open('new_json.pickle', 'rb') as f:
-    data = pickle.load(f)
 
-with open("new_c.csv", "w", encoding="utf-8", newline='') as c:
-    writer = csv.writer(c)
-    for row in data:
-        writer.writerow(row)
+
+def pickle_to_csv(pickle_file):
+    with open(pickle_file, 'rb') as f:
+        data = pickle.load(f)
+    new_filename = os.path.splitext(pickle_file)[0] + ".csv"
+    with open(new_filename, "w", encoding="utf-8", newline='') as c:
+        writer = csv.writer(c)
+        for row in data:
+            writer.writerow(row)
+
+
+pickle_to_csv('new_json.pickle')

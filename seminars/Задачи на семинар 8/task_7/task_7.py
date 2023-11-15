@@ -4,6 +4,7 @@
 использования csv.DictReader.
 Распечатайте его как pickle строку.
 """
+
 import csv
 import pickle
 
