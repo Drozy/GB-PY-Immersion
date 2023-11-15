@@ -1,0 +1,1 @@
+[{"Path": "dir1\\123.txt", "Type": "File", "Size": 6}, {"Path": "dir1\\file0.txt", "Type": "File", "Size": 9}, {"Path": "dir1\\file1.txt", "Type": "File", "Size": 31}, {"Path": "dir1\\dir2", "Type": "Directory", "Size": 393}, {"Path": "dir1\\dir2\\file2.txt", "Type": "File", "Size": 393}]

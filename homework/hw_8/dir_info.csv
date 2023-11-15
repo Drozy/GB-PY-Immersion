@@ -1,0 +1,6 @@
+Path,Type,Size
+dir1\123.txt,File,6
+dir1\file0.txt,File,9
+dir1\file1.txt,File,31
+dir1\dir2,Directory,393
+dir1\dir2\file2.txt,File,393
