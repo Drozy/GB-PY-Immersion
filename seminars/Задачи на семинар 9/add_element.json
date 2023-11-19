@@ -1,0 +1,26 @@
+{
+  "1": {
+    "args": [
+      2,
+      66
+    ],
+    "kwargs": {
+      "test": "4",
+      "text": "Привет",
+      "log": true
+    },
+    "result": 68
+  },
+  "2": {
+    "args": [
+      2,
+      66
+    ],
+    "kwargs": {
+      "test": "4",
+      "text": "Привет",
+      "log": true
+    },
+    "result": 68
+  }
+}
