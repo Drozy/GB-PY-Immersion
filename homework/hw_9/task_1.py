@@ -36,33 +36,28 @@ def generate_csv_file(file_name, rows):
             writer.writerow([randint(1, 100), randint(1, 100), randint(1, 100)])
 
 
-def save_to_json(csv_file): #TODO: переписать декоратор, сейчас нерабочая версия, нет входа в обертку
+def save_to_json(func):
     data = []
 
-    def decorator(func):
-        print('decor')
-        def wrapper():
-            print('wrap')
-            with open(csv_file, 'r', encoding='utf-8') as cf:
-                contents = cf.readlines()
-                for row in contents:
-                    args = [int(el) for el in row.split(',')]
+    def wrapper(csv_file):
+        with open(csv_file, 'r', encoding='utf-8') as cf:
+            contents = cf.readlines()
+            for row in contents:
+                args = [int(el) for el in row.split(',')]
                 result = func(args[0], args[1], args[2])
                 data.append({'a': args[0], 'b': args[1], 'c': args[2], 'result': result})
-            return data
+            with open("results.json", "w", encoding='utf-8') as wf:
+                json.dump(data, wf, indent=2, separators=(',', ':'), ensure_ascii=False)
+        return data
 
-        return wrapper
-
-    with open("results.json", "w", encoding='utf-8') as wf:
-        json.dump(data, wf, indent=2, separators=(',', ':'), ensure_ascii=False)
-    return decorator
+    return wrapper
 
 
 @save_to_json
 def find_roots(a, b, c):
     d = b ** 2 - 4 * a * c
     if d > 0:
-        return [(-b + (d ** (1 / 2))) / 2 * a, (-b - (d ** (1 / 2))) / 2 * a]
+        return [(-b + (d ** 0.5)) / (2 * a), (-b - (d ** 0.5)) / (2 * a)]
     if d == 0:
         return [-b / (2 * a)]
     return None
@@ -70,8 +65,7 @@ def find_roots(a, b, c):
 
 # Test
 generate_csv_file("input_data.csv", 101)
-save_to_json("input_data.csv")(find_roots)
-# find_roots("input_data.csv")
+find_roots("input_data.csv")
 
 with open("results.json", 'r', encoding='utf-8') as f:
     data = json.load(f)
