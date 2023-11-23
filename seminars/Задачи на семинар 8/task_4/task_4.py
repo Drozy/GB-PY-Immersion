@@ -16,8 +16,8 @@ import json
 import os
 
 
-def csv_to_json(scv_file):
-    with open(scv_file, encoding="utf-8") as f:
+def csv_to_json(csv_file):
+    with open(csv_file, encoding="utf-8") as f:
         f_r = csv.reader(f)
         res = list(f_r)
         for i in range(1, len(res)):
@@ -25,7 +25,7 @@ def csv_to_json(scv_file):
             res[i][1] = f"{temp.zfill(10)}"
             res[i][2] = res[i][2].title()
 
-    json_file = os.path.splitext(scv_file)[0] + '.json'
+    json_file = os.path.splitext(csv_file)[0] + '.json'
     with open(json_file, "w", encoding="utf-8") as j:
         json.dump(res, j, ensure_ascii=False)
 
