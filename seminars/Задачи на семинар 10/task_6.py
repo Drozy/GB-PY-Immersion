@@ -7,7 +7,8 @@
 Убедитесь, что в созданные ранее классы внесены правки.
 """
 
-class Animal():
+
+class Animal:
     def __init__(self, kind, name, age):
         self._kind = kind
         self._name = name
@@ -26,7 +27,7 @@ class Animal():
         self._age += 1
 
 
-class Fishes(Animal):
+class Fish(Animal):
 
     def __init__(self, kind, name, age, size):
         super().__init__(kind, name, age)
@@ -36,7 +37,7 @@ class Fishes(Animal):
         return self._size
 
 
-class Birds(Animal):
+class Bird(Animal):
 
     def __init__(self, kind, name, age, color):
         super().__init__(kind, name, age)
@@ -46,7 +47,7 @@ class Birds(Animal):
         return self._color
 
 
-class Mammals(Animal):
+class Mammal(Animal):
 
     def __init__(self, kind, name, age, spec):
         super().__init__(kind, name, age)
@@ -56,7 +57,7 @@ class Mammals(Animal):
         return self._spec
 
 
-f1 = Fishes('Карась', 'Федя', 1, 15)
+f1 = Fish('Карась', 'Федя', 1, 15)
 
 print(f'Вид: {f1.get_kind()}')
 print(f'кличка: {f1.get_name()}')

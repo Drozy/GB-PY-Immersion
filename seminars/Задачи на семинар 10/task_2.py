@@ -9,9 +9,10 @@
 сторона, считаем что у нас квадрат.
 """
 
+
 class Rectangle:
 
-    def __init__(self, side_a, side_b=0):
+    def __init__(self, side_a, side_b=0.0):
         self._side_a = side_a
         if side_b == 0:
             side_b = side_a
@@ -31,4 +32,3 @@ print(f'Периметр прямоугольника = {rectangle1.get_perimete
       f'Площадь прямоугольника = {rectangle1.get_area():.2f}')
 print(f'Периметр прямоугольника = {rectangle2.get_perimeter():.2f}, \n'
       f'Площадь прямоугольника = {rectangle2.get_area():.2f}')
-

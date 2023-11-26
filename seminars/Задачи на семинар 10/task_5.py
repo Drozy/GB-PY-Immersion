@@ -8,7 +8,8 @@
 информацию специфичную для данного класса.
 """
 
-class Fishes:
+
+class Fish:
 
     def __init__(self, kind, name, age, size):
         self._kind = kind
@@ -32,7 +33,7 @@ class Fishes:
         return self._size
 
 
-class Birds:
+class Bird:
 
     def __init__(self, kind, name, age, color):
         self._kind = kind
@@ -56,7 +57,7 @@ class Birds:
         return self._color
 
 
-class Mammals:
+class Mammal:
 
     def __init__(self, kind, name, age, spec):
         self._kind = kind
@@ -81,7 +82,7 @@ class Mammals:
 
 
 if __name__ == '__main__':
-    f1 = Fishes('Карась', 'Федя', 1, 15)
+    f1 = Fish('Карась', 'Федя', 1, 15)
 
     print(f'Вид: {f1.get_kind()}')
     print(f'кличка: {f1.get_name()}')

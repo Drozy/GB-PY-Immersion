@@ -43,5 +43,5 @@ if __name__ == "__main__":
     # person.up_birthday()
     # print(person.get_age())
     # print(person.get_fullname())
-    person.age = 80
+    person.age = 60
     print(person.age)
