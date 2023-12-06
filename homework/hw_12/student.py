@@ -53,16 +53,17 @@ class Student:
         alphabet = {"а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о",
                     "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ы", "ь", "э", "ю", "я"}
         if name == "name":
-            if not bool(alphabet.intersection(set(value.lower()))) or value[0].islower():
+            if bool(alphabet.intersection(set(value.lower()))) or value[0].islower():
+                self.__dict__[name] = value
+            else:
                 print("ФИО должно состоять только из букв и начинаться с заглавной буквы")
         else:
             self.__dict__[name] = value
 
-    def __getattr__(self, name):    # TODO: что-то не так
+    def __getattr__(self, name):
         """
         Позволяет получать значения атрибутов предметов (оценок и результатов тестов) по их именам.
         """
-
         if name in self.subjects:
             return self.subjects[name]
         return f'Предмет {name} не найден'
@@ -74,11 +75,12 @@ class Student:
         Предметы: Математика, История
         """
         subjects = ""
-        for subj in self.subjects:
-            if subjects != "":
-                subjects = subjects + ", " + subj
-            else:
-                subjects = subj
+        for key, value in self.subjects.items():
+            if len(value['grades']) > 0 and len(value['test_scores']) > 0:
+                if subjects != "":
+                    subjects = subjects + ", " + key
+                else:
+                    subjects = key
         return f'Студент: {self.name}\nПредметы: {subjects}'
 
     def load_subjects(self, subjects_file):
@@ -99,9 +101,9 @@ class Student:
             if subject in self.subjects:
                 self.subjects[subject]['grades'].append(grade)
             else:
-                print(f"Предмет {subject} не найден")
+                raise ValueError(f"Предмет {subject} не найден")
         else:
-            print("Оценка должна быть целым числом от 2 до 5")
+            raise ValueError("Оценка должна быть целым числом от 2 до 5")
 
     def add_test_score(self, subject, test_score):
         """
@@ -112,9 +114,9 @@ class Student:
             if subject in self.subjects:
                 self.subjects[subject]['test_scores'].append(test_score)
             else:
-                print(f"Предмет {subject} не найден")
+                raise ValueError(f"Предмет {subject} не найден")
         else:
-            print("Результат теста должен быть целым числом от 0 до 100")
+            raise ValueError("Результат теста должен быть целым числом от 0 до 100")
 
     def get_average_test_score(self, subject):
         """
