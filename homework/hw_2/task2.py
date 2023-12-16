@@ -9,6 +9,7 @@ from fractions import Fraction
 frac1 = "1/2"
 frac2 = "1/3"
 
+
 def sum_and_product(frac1, frac2):
     # Разделение строк на числитель и знаменатель
     numer1, denom1 = map(int, frac1.split('/'))
@@ -17,7 +18,7 @@ def sum_and_product(frac1, frac2):
     # Вычисление суммы дробей
     sum_numer = numer1 * denom2 + numer2 * denom1
     sum_denom = denom1 * denom2
-    
+
     # Вычисление произведения дробей
     prod_numer = numer1 * numer2
     prod_denom = denom1 * denom2
@@ -36,12 +37,16 @@ def sum_and_product(frac1, frac2):
     # return f"Сумма дробей: {sum_numer}/{sum_denom}\n", \
     #     f"Произведение дробей: {prod_numer}/{prod_denom}"
 
+
 # Нахождение наибольшего общего делителя
 def gcd(a, b):
     while b:
         a, b = b, a % b
     return a
 
+
 sum_and_product(frac1, frac2)
+
+# Проверка кода
 print("Сумма дробей:", Fraction(frac1) + Fraction(frac2))
 print("Произведение дробей:", Fraction(frac1) * Fraction(frac2))
